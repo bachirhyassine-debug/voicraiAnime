@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnimeVoice Pro</title>
+
+<style>
+body{
+    background: linear-gradient(135deg,#0f0f1a,#1c1c3c);
+    font-family: Arial, sans-serif;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+h1{
+    color:#ff004c;
+    font-size:32px;
+}
+
+textarea{
+    width:90%;
+    max-width:600px;
+    height:160px;
+    border-radius:12px;
+    border:none;
+    padding:15px;
+    font-size:16px;
+    margin-top:20px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    background:#ff004c;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff2a6d;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🔥 AnimeVoice Pro 🔥</h1>
+<p>حوّل ملخص الأنمي إلى صوت حماسي</p>
+
+<textarea id="text" placeholder="اكتب النص هنا..."></textarea>
+<br>
+
+<button onclick="speak()">🔥 تشغيل الصوت الحماسي</button>
+<button onclick="stopVoice()">⛔ إيقاف</button>
+
+<script>
+function speak(){
+    const text = document.getElementById("text").value;
+    if(text.trim() === "") return;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    // إعدادات الحماس 🔥
+    utterance.lang = "ar-EG";
+    utterance.rate = 1.1;     // سرعة أعلى شوي
+    utterance.pitch = 1.2;    // طبقة أعلى للحماس
+    utterance.volume = 1;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
+}
+
+function stopVoice(){
+    speechSynthesis.cancel();
+}
+</script>
+
+</body>
+</html>
